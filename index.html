@@ -21,6 +21,22 @@
 </head>
 <body>
 
+  <!-- Menú hamburguesa -->
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <!-- Menú lateral -->
+  <div id="sideMenu" class="side-menu">
+    <span class="close-btn" onclick="toggleMenu()">✖</span>
+    
+    <!-- Logo centrado dentro del panel -->
+    <div class="side-logo">
+      <img src="img/logo2.png" alt="Logo 2">
+    </div>
+
+    <a class="disabled" title="Próximamente">🛒 Tienda (Próximamente)</a>
+    <a onclick="mostrarContacto()">📩 Contáctanos</a>
+  </div>
+
   <div class="logo">
     <img src="img/logo.png" alt="Logo">
   </div>
@@ -44,6 +60,36 @@
     <a href="https://www.facebook.com/profile.php?id=61576320758565" target="_blank">FACEBOOK</a>
     <a href="https://chat.whatsapp.com/BMxboqJeph14Pcy0JBjC8C" target="_blank">WHATSAPP</a>
   </div>
+
+  <!-- Panel de contacto -->
+  <div id="panelContacto" class="panel-contacto">
+    <div class="panel-contenido">
+      <span class="cerrar" onclick="cerrarContacto()">✖</span>
+      <h2>Contáctanos</h2>
+      <p>Selecciona un método para comunicarte con nosotros:</p>
+      <div class="contact-buttons">
+        <a href="https://wa.me/18293532614" target="_blank" class="btn-whatsapp">📱 WhatsApp</a>
+        <a href="mailto:lovercarsdr@gmail.com" class="btn-email">📧 Correo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function mostrarContacto() {
+      document.getElementById('panelContacto').style.display = 'flex';
+      document.getElementById('sideMenu').style.left = '-250px';
+    }
+
+    function cerrarContacto() {
+      document.getElementById('panelContacto').style.display = 'none';
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.style.left = (menu.style.left === '0px') ? '-250px' : '0px';
+    }
+  </script>
 
 </body>
 </html>

@@ -1,0 +1,343 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cabin', sans-serif;
+  background-image: url('img/fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Botón de idioma como icono */
+.language-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1200;
+  user-select: none;
+}
+
+.language-toggle i.fas.fa-globe {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+  outline: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.language-toggle i.fas.fa-globe:hover,
+.language-toggle i.fas.fa-globe:focus {
+  color: #e21b1b;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Panel de selección de idioma */
+.language-panel {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #111; /* Mismo color que el menú lateral */
+  border-radius: 10px;
+  padding: 8px 12px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  width: 110px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1300;
+}
+
+.language-panel.visible {
+  display: flex;
+  animation: slideDownFade 0.4s forwards;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.language-panel button {
+  background-color: #e21b1b;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 8px 0;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.language-panel button:hover,
+.language-panel button:focus {
+  background-color: #b21515;
+  outline: none;
+}
+
+/* Animación para mostrar el panel */
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo */
+.logo-solo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.logo-solo img {
+  max-width: 240px;
+  height: auto;
+  cursor: pointer;
+}
+
+/* Descripción */
+.description {
+  margin-top: 8px;
+  font-size: 17px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Iconos sociales (Font Awesome) */
+.mini-icons {
+  margin-top: 15px;
+}
+
+.mini-icons a {
+  font-size: 26px;
+  margin: 0 10px;
+  color: white;
+  transition: color 0.3s;
+}
+
+.mini-icons a:hover {
+  color: #e21b1b;
+}
+
+/* Botones */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.buttons a {
+  background-color: white;
+  color: black;
+  border: 2px solid #e21b1b;
+  border-radius: 50px;
+  text-decoration: none;
+  padding: 15px;
+  width: 80%;
+  max-width: 400px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.buttons a:hover {
+  background-color: #ccc;
+}
+
+/* Menú hamburguesa */
+.menu-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  z-index: 1100;
+}
+
+.menu-icon.hidden {
+  display: none;
+}
+
+/* Menú lateral */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #111;
+  padding: 30px 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
+  transition: left 0.3s ease;
+  z-index: 1090;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.side-menu .close-btn {
+  align-self: flex-end;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+}
+
+.side-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+  background: #222;
+  border-radius: 10px;
+  transition: background 0.3s;
+  cursor: pointer;
+  border: 2px solid #e21b1b;
+  text-align: center;
+}
+
+.side-menu a:hover {
+  background: #333;
+}
+
+.side-menu .disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.side-logo {
+  text-align: center;
+  margin: 10px 0 8px 0;
+}
+
+.side-logo img {
+  width: 165px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Panel de contacto */
+.panel-contacto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(50px);
+  background-color: rgba(0, 0, 0, 0);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease,
+    background-color 0.25s ease;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.panel-contacto.mostrar {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+}
+
+.panel-contenido {
+  background-color: #fff;
+  color: #000;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: left;
+  width: 90%;
+  max-width: 400px;
+  font-family: 'Cabin', sans-serif;
+  position: relative;
+}
+
+.panel-contenido h2 {
+  margin-bottom: 10px;
+}
+
+.panel-contenido .cerrar {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Botones del panel de contacto */
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.contact-buttons a {
+  padding: 12px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  width: 200px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-whatsapp {
+  background-color: #25D366;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1ebe57;
+}
+
+.btn-email {
+  background-color: #007bff;
+}
+
+.btn-email:hover {
+  background-color: #0056b3;
+}

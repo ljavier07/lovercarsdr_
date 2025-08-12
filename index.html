@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lover Cars DR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body oncontextmenu="return false">
+
+  <!-- Selector de idioma con ícono -->
+  <div class="language-toggle">
+    <i class="fas fa-globe" onclick="toggleLanguagePanel()"></i>
+    <div id="languagePanel" class="language-panel">
+      <button onclick="setLanguage('es')">Español</button>
+      <button onclick="setLanguage('en')">English</button>
+    </div>
+  </div>
+
+  <!-- Menú hamburguesa -->
+  <div id="menuIcon" class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <!-- Menú lateral -->
+  <div id="sideMenu" class="side-menu">
+    <span class="close-btn" onclick="toggleMenu()">✖</span>
+    
+    <div class="side-logo">
+      <img src="img/logo2.png" alt="Logo 2">
+    </div>
+
+    <a class="disabled tienda" title="Próximamente">🛒 Tienda (Próximamente)</a>
+    <a class="contacto" onclick="mostrarContacto()">📩 Contáctanos</a>
+    <a class="disabled eventos" title="Próximamente">🎉 Eventos (Próximamente)</a>
+  </div>
+
+  <!-- Logo central -->
+  <div class="logo-solo">
+    <img src="img/logo.png" alt="Logo centrado" onclick="location.reload()">
+  </div>
+
+  <!-- Descripción -->
+  <p class="description">
+    ¡Bienvenidos a nuestra página oficial! 🎉 Aquí podrás acceder rápidamente a todas nuestras plataformas oficiales, visitar nuestra tienda y ponerte en contacto con nosotros 📞. ¡Todo en un solo lugar para ti!
+  </p>
+
+  <!-- Íconos de redes -->
+  <div class="mini-icons">
+    <a href="https://www.instagram.com/lovercarsdr_?igsh=MWtkemJieXVlajM4eQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@lovercarsdr_?_t=ZS-8wepjZYOWa9&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.facebook.com/profile.php?id=61576320758565" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://chat.whatsapp.com/BMxboqJeph14Pcy0JBjC8C" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <!-- Botones -->
+  <div class="buttons">
+    <a href="https://www.instagram.com/lovercarsdr_?igsh=MWtkemJieXVlajM4eQ==" target="_blank">INSTAGRAM</a>
+    <a href="https://www.tiktok.com/@lovercarsdr_?_t=ZS-8wepjZYOWa9&_r=1" target="_blank">TIKTOK</a>
+    <a href="https://www.facebook.com/profile.php?id=61576320758565" target="_blank">FACEBOOK</a>
+    <a href="https://chat.whatsapp.com/BMxboqJeph14Pcy0JBjC8C" target="_blank">WHATSAPP</a>
+  </div>
+
+  <!-- Panel de contacto -->
+  <div id="panelContacto" class="panel-contacto">
+    <div class="panel-contenido">
+      <span class="cerrar" onclick="cerrarContacto()">✖</span>
+      <h2 class="panel-titulo">Contáctanos 📞</h2>
+      <p class="panel-texto">Selecciona un método para comunicarte con nosotros:</p>
+      <div class="contact-buttons">
+        <a href="https://wa.me/18293532614" target="_blank" class="btn-whatsapp">📱 WhatsApp</a>
+        <a href="mailto:lovercarsdr@gmail.com" class="btn-email">📧 Correo</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      const icon = document.getElementById('menuIcon');
+      const isOpen = menu.style.left === '0px';
+      menu.style.left = isOpen ? '-250px' : '0px';
+      icon.classList.toggle('hidden', !isOpen);
+    }
+
+    function mostrarContacto() {
+      document.getElementById('panelContacto').style.display = 'flex';
+      setTimeout(() => {
+        document.getElementById('panelContacto').classList.add('mostrar');
+      }, 10);
+      document.getElementById('sideMenu').style.left = '-250px';
+      document.getElementById('menuIcon').classList.remove('hidden');
+    }
+
+    function cerrarContacto() {
+      const panel = document.getElementById('panelContacto');
+      panel.classList.remove('mostrar');
+      setTimeout(() => {
+        panel.style.display = 'none';
+      }, 250);
+    }
+
+    function toggleLanguagePanel() {
+      const panel = document.getElementById('languagePanel');
+      panel.classList.toggle('visible');
+    }
+
+    const traducciones = {
+      es: {
+        bienvenida: "¡Bienvenidos a nuestra página oficial! 🎉 Aquí podrás acceder rápidamente a todas nuestras plataformas oficiales, visitar nuestra tienda y ponerte en contacto con nosotros 📞. ¡Todo en un solo lugar para ti!",
+        tienda: "🛒 Tienda (Próximamente)",
+        contacto: "📩 Contáctanos",
+        eventos: "🎉 Eventos (Próximamente)",
+        panelTitulo: "Contáctanos 📞",
+        panelTexto: "Selecciona un método para comunicarte con nosotros:",
+        whatsapp: "📱 WhatsApp",
+        correo: "📧 Correo"
+      },
+      en: {
+        bienvenida: "Welcome to our official page! 🎉 Here you can quickly access all our official platforms, visit our store and get in touch with us 📞. All in one place for you!",
+        tienda: "🛒 Store (Coming Soon)",
+        contacto: "📩 Contact Us",
+        eventos: "🎉 Events (Coming Soon)",
+        panelTitulo: "Contact Us 📞",
+        panelTexto: "Choose a method to contact us:",
+        whatsapp: "📱 WhatsApp",
+        correo: "📧 Email"
+      }
+    };
+
+    let idiomaActual = "es";
+
+    function setLanguage(lang) {
+      idiomaActual = lang;
+      const t = traducciones[idiomaActual];
+      document.querySelector(".description").textContent = t.bienvenida;
+      document.querySelector(".tienda").textContent = t.tienda;
+      document.querySelector(".contacto").textContent = t.contacto;
+      document.querySelector(".eventos").textContent = t.eventos;
+      document.querySelector(".panel-titulo").textContent = t.panelTitulo;
+      document.querySelector(".panel-texto").textContent = t.panelTexto;
+      document.querySelector(".btn-whatsapp").textContent = t.whatsapp;
+      document.querySelector(".btn-email").textContent = t.correo;
+      document.getElementById("languagePanel").classList.remove("visible");
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img').forEach(img => {
+        img.setAttribute('draggable', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
